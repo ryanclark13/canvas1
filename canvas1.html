@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <style>
+  canvas{background:#000000;}
+  </style>
+  <meta charset="utf-8"/>
+  <script type="application/javascript">
+    var s = [1.5, 2, 3, 4, 5, 6];
+    var pos = [0, 0, 0, 0, 0, 0];
+
+    function startscreen(){
+        
+
+    }
+
+    function draw() {
+        var ctx = document.getElementById('canvas').getContext("2d");
+
+
+        ctx.clearRect(0, 0, 500, 500); //clear canvas
+
+        ctx.save();
+        ctx.translate(pos[0], 0);
+
+        ctx.fillStyle = "pink";
+        ctx.fillRect (30, 30, 55, 50);
+
+        ctx.restore();
+
+        ctx.save();
+        ctx.translate(pos[1], 0);
+
+        ctx.fillStyle ="green";
+        ctx.font = "48px serif";
+        ctx.fillText("Hello Its Me", 10, 50);
+
+        ctx.restore();
+
+        ctx.save();
+        ctx.translate(pos[2], 0);
+
+        ctx.beginPath();
+        ctx.arc(95,150,30,0,2*Math.PI);
+        ctx.fillStyle = "blue";
+        ctx.fill();
+
+        ctx.restore();
+        
+        ctx.save();
+        ctx.translate(pos[3], 0);
+
+
+        ctx.beginPath();
+        ctx.fillStyle = "yellow";
+        ctx.arc(100,200,50,0,Math.PI/2,false);
+        ctx.fill();
+
+        ctx.restore();
+
+        ctx.save();
+        ctx.translate(pos[4], 0);
+
+
+         ctx.beginPath();
+         ctx.moveTo(100, 50);
+         ctx.lineTo(130, 100);
+         ctx.lineTo(70, 100);
+         ctx.fillStyle = "red";
+         ctx.fill();
+
+        ctx.restore();
+
+        ctx.save();
+        ctx.translate(pos[5], 0);
+
+
+         ctx.beginPath();
+         ctx.fillStyle = "orange";
+         ctx.arc(100,290,35,0,Math.PI/2,true);
+         ctx.fill();
+
+         ctx.restore();
+
+        pos[0] += s[0];
+        pos[1] += s[1];
+        pos[2] += s[2];
+        pos[3] += s[3];
+        pos[4] += s[4];
+        pos[5] += s[5];
+        pos[6] += s[6];
+
+
+        if(pos[0] > 500) {
+          pos[0] = 0;
+        }
+        if(pos[1] > 500) {
+          pos[1] = 0;
+        }
+        if(pos[2] > 500) {
+          pos[2] = 0;
+        }
+        if(pos[3] > 500) {
+          pos[3] = 0;
+        }
+        if(pos[4] > 500) {
+          pos[4] = 0;
+        }
+        if(pos[5] > 500) {
+          pos[5] = 0;
+        }
+        if(pos[6] > 500) {
+          pos[6] = 0;
+        }
+
+        window.requestAnimationFrame(draw);
+    }
+  </script>
+ </head>
+ <body onload="draw();">
+   <canvas id="canvas" width="500" height="350"></canvas>
+ </body>
+</html>
